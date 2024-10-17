@@ -58,8 +58,10 @@ def after_scenario(context, scenario):
 
 
 def after_feature(context, feature):
-    logger.info(f"Feature Status: {feature.status}")
-    context.driver.quit()
+    try:
+        logger.info(f"Feature Status: {feature.status}")
+    finally:
+        context.driver.quit()
 
 
 def after_all(context):
