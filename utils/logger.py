@@ -20,7 +20,7 @@ def get_logs(log_file):
     logger = logging.getLogger()
     if logger.hasHandlers():
         logger.handlers.clear()
-    ## TO print in console
+    ## To print in console
     # logging.basicConfig(format="%(asctime)s [%(levelname)s] %(message)s (%(filename)s:%(lineno)s)", datefmt='%d/%m/%Y %I:%M:%S %p')
 
     ## To print log in allure report as well

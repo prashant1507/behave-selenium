@@ -9,13 +9,9 @@ details = read_file(Fc.details)
 
 def stop_docker_compose(logger):
     if details["start_docker_compose"]:
-        try:
-            logger.info("Stopping Docker Compose if Running")
-            execute_command(f"sshpass -p {details["password_for_sshpass"]} sudo docker-compose -f {Fc.docker_compose_file} down")
-            time.sleep(5)
-        except subprocess.CalledProcessError as e:
-            logger.info(f"An error occurred while starting Docker Compose: {e}")
-            sys.exit(1)
+        logger.info("Stopping Docker Compose if Running")
+        execute_command(f"sshpass -p {details["password_for_sshpass"]} sudo docker-compose -f {Fc.docker_compose_file} down")
+        time.sleep(5)
 
 
 def start_docker_compose(logger):
@@ -27,7 +23,7 @@ def start_docker_compose(logger):
             logger.info("Waiting for all services to be healthy")
             while not all_services_healthy():
                 logger.info("Services are still starting up. Waiting for 5 seconds")
-                time.sleep(5)
+                time.sleep(2)
             time.sleep(5)
             logger.info("All services are up and running!")
         except subprocess.CalledProcessError as e:
@@ -40,7 +36,4 @@ def all_services_healthy():
     output = result.stdout
     services_status = [line for line in output.splitlines() if "Up" in line or "healthy" in line]
     services_total = [line for line in output.splitlines() if "Exit" not in line and "Name" not in line and "--" not in line]
-    if len(services_status) == len(services_total) and len(services_total) > 0:
-        return True
-    else:
-        return False
+    return len(services_status) == len(services_total) and len(services_total) > 0

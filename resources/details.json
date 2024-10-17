@@ -2,7 +2,7 @@
   "delete_old_reports": true,
   "start_docker_compose": true,
   "password_for_sshpass": "",
-  "headless": true,
+  "headless": false,
   "email": {
     "send_report_on_email": false,
     "token": "",
