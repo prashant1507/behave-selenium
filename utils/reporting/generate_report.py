@@ -1,7 +1,5 @@
 import datetime
 
-import allure
-
 from utils.helper_utils import execute_command
 from helpers.constants.framework_constants import FrameworkConstants as Fc
 from utils.send_report_on_email import send_report, details
@@ -23,7 +21,7 @@ def set_environment_variables():
         "URL": details["url"],
         "Browser": details["browser"]
     }
-    allure.step("Set environment variables")
+
     with open(f"{Fc.allure_json_dir}/environment.properties", "w") as file:
         for key, value in environment_data.items():
             file.write(f"{key}={value}\n")

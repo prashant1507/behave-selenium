@@ -1,7 +1,7 @@
 import datetime
 from helpers.constants.framework_constants import FrameworkConstants as Fc
 from utils.docker_compose_actions import start_docker_compose, stop_docker_compose
-from utils.logger import get_logs
+from utils.reporting.logger import get_logs
 from utils.reporting.screenshots import attach_screenshot_in_report
 from utils.browser_utils import prepare_browser
 from utils.helper_utils import clean_up, create_dir
