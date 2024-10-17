@@ -3,3 +3,5 @@ behave
 allure-behave
 behavex
 allure-python-commons
+Faker
+pycommons-lang
