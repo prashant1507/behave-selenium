@@ -1,0 +1,7 @@
+.idea
+.venv
+.vscode
+output
+reports
+behavex_output
+allure-report
