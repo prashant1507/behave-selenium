@@ -1,4 +1,8 @@
 import datetime
+
+from behavex_images import image_attachments
+from behavex_images.image_attachments import AttachmentsCondition
+
 from helpers.constants.framework_constants import FrameworkConstants as Fc
 from utils.docker_compose_actions import start_docker_compose, stop_docker_compose
 from utils.reporting.logger import get_logs
@@ -19,6 +23,7 @@ def before_all(context):
     global logger, details
     logger = get_logs(f"{Fc.logs_dir}/{file_name}.txt")
     start_docker_compose(logger)
+    image_attachments.set_attachments_condition(context, AttachmentsCondition.ALWAYS)
 
 
 def before_feature(context, feature):
@@ -51,7 +56,8 @@ def after_step(context, step):
     file_name = current_time.strftime("%d_%m_%y-%H_%M_%S_%f")[:-3]
     context.driver.get_screenshot_as_file(f"{Fc.screenshots_dir}/{file_name}.png")
     attach_screenshot_in_report(f"{Fc.screenshots_dir}/{file_name}.png")
-
+    image_attachments.attach_image_file(context, f"{Fc.screenshots_dir}/{file_name}.png")
+    # image_attachments.attach_image_binary(context, context.driver.get_screenshot_as_png())
 
 def after_scenario(context, scenario):
     logger.info(f"Scenario status: {scenario.status}")
