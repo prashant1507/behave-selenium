@@ -8,12 +8,12 @@ from helpers.constants.framework_constants import FrameworkConstants as Fc
 
 
 def main():
-    prepare_dirs()
-    start_docker_compose(logger)
-    process = execute_command_using_popen(f"behavex {Fc.features} -c {Fc.conf_behavex} --parallel-processes 2")
-
+    process = None
     # Read and print the output line by line
     try:
+        prepare_dirs()
+        start_docker_compose(logger)
+        process = execute_command_using_popen(f"behavex {Fc.features} -c {Fc.conf_behavex} --parallel-processes 2")
         while True:
             output = process.stdout.readline()
             if output == StringUtils.EMPTY and process.poll() is not None:
