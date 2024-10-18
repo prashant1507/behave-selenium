@@ -2,27 +2,18 @@ import datetime
 
 from behavex_images import image_attachments
 from behavex_images.image_attachments import AttachmentsCondition
-
 from helpers.constants.framework_constants import FrameworkConstants as Fc
-from utils.docker_compose_actions import start_docker_compose, stop_docker_compose
 from utils.reporting.logger import get_logs
 from utils.reporting.screenshots import attach_screenshot_in_report
 from utils.browser_utils import prepare_browser
-from utils.helper_utils import clean_up, create_dir
-from utils.reporting.generate_report import generate_allure_report
 
 
 def before_all(context):
-    clean_up()
     current_time = datetime.datetime.now()
     file_name = current_time.strftime("%d_%m_%y-%H_%M_%S_%f")[:-3]
-
-    dir_structure = [Fc.reports_parent_dir, Fc.allure_json_dir, Fc.allure_html_dir, Fc.logs_dir, Fc.json_dir, Fc.pretty_dir, Fc.rerun_dir, Fc.screenshots_dir]
-    for subdir in dir_structure:
-        create_dir(subdir)
     global logger, details
     logger = get_logs(f"{Fc.logs_dir}/{file_name}.txt")
-    start_docker_compose(logger)
+    # start_docker_compose(logger)
     image_attachments.set_attachments_condition(context, AttachmentsCondition.ALWAYS)
 
 
@@ -70,8 +61,8 @@ def after_feature(context, feature):
         context.driver.quit()
 
 
-def after_all(context):
-    try:
-        generate_allure_report(logger)
-    finally:
-        stop_docker_compose(logger)
+# def after_all(context):
+#     try:
+#         generate_allure_report(logger)
+#     finally:
+#         stop_docker_compose(logger)

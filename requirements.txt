@@ -1,7 +1,7 @@
-selenium
-behave
+selenium~=4.25.0
+behave~=1.2.6
 allure-behave
 behavex
-allure-python-commons
+allure-python-commons~=2.13.5
 Faker
 pycommons-lang

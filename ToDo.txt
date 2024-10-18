@@ -1,0 +1,2 @@
+
+Fix allure report for parallel run
