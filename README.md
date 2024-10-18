@@ -14,7 +14,7 @@
    ```
 
 # Start Tests
-1. Execute `behave` or `behavex tests/features/ -c conf_behavex.cfg`
+1. Execute `python3 runner.py`
 
 
 # Helpers

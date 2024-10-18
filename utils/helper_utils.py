@@ -21,7 +21,7 @@ def execute_command_using_run(command):
     return subprocess.run(str(command).split(" "), capture_output=True, text=True, check=True)
 
 def execute_command_using_popen(command):
-    return subprocess.Popen(command.split(" "), stdout=subprocess.PIPE, text=True)
+    return subprocess.Popen(command.split(" "), stdout=subprocess.PIPE, stderr=subprocess.PIPE, text=True, bufsize=1)
 
 
 def create_dir(folder):

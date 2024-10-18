@@ -1,7 +1,7 @@
 {
   "delete_old_reports": true,
   "start_docker_compose": true,
-  "password_for_sshpass": "",
+  "password_for_sshpass": "password",
   "headless": false,
   "email": {
     "send_report_on_email": false,
