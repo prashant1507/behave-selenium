@@ -23,8 +23,8 @@ def main():
     # Read and print the output line by line
     try:
         prepare_dirs()
-        start_docker_compose(log)
-        process = execute_command_using_popen(f"behavex {Fc.features} -c {Fc.conf_behavex} --parallel-processes 2 --parallel-delay 1000 --show-progress-bar")
+        # start_docker_compose(log)
+        process = execute_command_using_popen(f"behavex {Fc.features} -c {Fc.conf_behavex} --parallel-processes 1 --parallel-delay 1000 --show-progress-bar")
         while True:
             output = process.stdout.readline()
             if output == StringUtils.EMPTY and process.poll() is not None:
@@ -36,7 +36,7 @@ def main():
         process.terminate()
     finally:
         generate_allure_report(log)
-        stop_docker_compose(log)
+        # stop_docker_compose(log)
 
 if __name__ == "__main__":
     main()

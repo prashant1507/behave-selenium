@@ -3,6 +3,7 @@
   "start_docker_compose": true,
   "password_for_sshpass": "password",
   "headless": false,
+  "allow_tracing": true,
   "email": {
     "send_report_on_email": false,
     "token": "",

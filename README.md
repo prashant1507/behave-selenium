@@ -7,7 +7,7 @@
     Execute: sudo dpkg -i allure_*_all.deb
     Execute: allure --version
    ```
-3. Install `sudo apt install sshpass docker docker-compose`
+3. Execute `playwright install`
 4. Setup `resources/details.json` as
    ```
       # TO DO
@@ -20,7 +20,8 @@
 # Helpers
 1. Check all behave options `behave -h`
 2. Check all allure options `allure -h`
-3. Execute `allure serve FOLDER_PATH` to start and create allure-report
+3. Check all playwright options `playwright -h`
+4Execute `allure serve FOLDER_PATH` to start and create allure-report
 
 # Notes:
 1. Test will be executed in parallel feature by feature

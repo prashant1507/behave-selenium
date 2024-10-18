@@ -10,7 +10,7 @@ def prepare_dirs():
     dir_structure = [Fc.reports_parent_dir, Fc.allure_json_dir, Fc.allure_html_dir, Fc.html_dir, Fc.logs_dir, Fc.json_dir,
                      Fc.pretty_dir, Fc.rerun_dir, Fc.screenshots_dir]
 
-    details = read_file(Fc.details)
+    details = read_file(Fc.details_file)
     if details["delete_old_reports"]:
         for subdir in dir_structure:
             delete_dir(subdir)

@@ -11,7 +11,7 @@ from utils.helper_utils import read_file
 subject = "Test Report"
 body = "Please find the attached file."
 
-details = read_file(Fc.details)
+details = read_file(Fc.details_file)
 
 def send_email_with_attachment(file_path, logger):
     global server

@@ -5,7 +5,7 @@ import time
 from helpers.constants.framework_constants import FrameworkConstants as Fc
 from utils.helper_utils import execute_command_using_run, read_file
 
-details = read_file(Fc.details)
+details = read_file(Fc.details_file)
 
 def stop_docker_compose(logger):
     if details["start_docker_compose"]:
