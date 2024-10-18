@@ -20,12 +20,12 @@ def start_docker_compose(logger):
             stop_docker_compose(logger)
             logger.info("Starting Docker Compose")
             execute_command_using_run(f"sshpass -p {details["password_for_sshpass"]} sudo docker-compose -f {Fc.docker_compose_file} up -d")
-            logger.info("Waiting for all services to be healthy")
+            logger.info("Waiting for all containers to be healthy")
             while not all_services_healthy():
-                logger.info("Services are still starting up. Waiting for 5 seconds")
+                logger.info("Containers are still starting up. Waiting for 5 seconds")
                 time.sleep(2)
             time.sleep(5)
-            logger.info("All services are up and running!")
+            logger.info("All containers are up and running!")
         except subprocess.CalledProcessError as e:
             logger.info(f"An error occurred while starting Docker Compose: {e}")
             sys.exit(1)
